@@ -42,7 +42,7 @@ export class UsersBrowserComponent implements OnInit {
         });
       }
       else {
-        this.snackBar.open('Error', 'Close', {
+        this.snackBar.open('Failed to load users', 'Close', {
           duration: 3000
         });
       }

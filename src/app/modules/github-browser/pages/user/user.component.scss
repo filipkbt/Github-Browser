@@ -1,18 +1,19 @@
 .container {
-    display: flex;
-    margin: 30px 50px;
-    padding: 0 16px;
-    flex-direction: row;
-    align-items: center;
-  }
+  display: flex;
+  margin: 30px 50px;
+  padding: 0 16px;
+  flex-direction: row;
+  align-items: center;
+}
 
 .user-profile {
-  align-self:flex-start; 
-  flex-grow:1; 
-  padding:15px;
+  align-self: flex-start;
+  flex-grow: 1;
+  padding: 15px;
 }
 
 .user-repos {
-  flex-grow:7;  
-  padding:15px;
+  flex-grow: 7;
+  padding: 15px;
+  width: 100%;
 }
