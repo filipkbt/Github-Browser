@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { RepoService } from 'src/app/core/services/repo.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-repos',
@@ -24,6 +25,8 @@ export class UserReposComponent implements OnInit, OnChanges {
   columnsToDisplay = ['name', 'fork'];
   expandedElement: Repo | null;
   dataSource: MatTableDataSource<Repo>;
+  isLoadingBranches = false;
+  @Input() isLoadingRepos;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -38,19 +41,24 @@ export class UserReposComponent implements OnInit, OnChanges {
     if (changes['userRepos'] && changes['userRepos'].currentValue) {
       this.userRepos = changes['userRepos'].currentValue.filter(x => !x.fork);
       this.dataSource = new MatTableDataSource(this.userRepos);
+      this.dataSource.filterPredicate = (repo: Repo, filter: string) =>
+        repo.name && repo.name.toLowerCase().indexOf(filter) !== -1;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }
   }
 
   expandElement(element: any) {
-    this.repoService.getReposBranches(element.name, this.userName).subscribe(x => {
-      this.userRepos.find(x => x.name === element.name).branches = x;
-    }, err => {
-      this.snackBar.open('Failed to get branches connected with repo.', 'Close', {
-        duration: 3000
+    this.isLoadingBranches = true;
+    this.repoService.getReposBranches(element.name, this.userName)
+      .pipe(finalize(() => this.isLoadingBranches = false))
+      .subscribe(x => {
+        this.userRepos.find(x => x.name === element.name).branches = x;
+      }, err => {
+        this.snackBar.open('Failed to get branches connected with repo.', 'Close', {
+          duration: 3000
+        });
       });
-    });
     this.expandedElement = this.expandedElement === element ? null : element;
   }
 
