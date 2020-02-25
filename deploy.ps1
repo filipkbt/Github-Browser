@@ -4,7 +4,8 @@ param(
     [string]$releaseMessage
 )
 
-cd 'Github-Browser-CI\dist\Github-Browser\'
+$dir = Split-Path $MyInvocation.MyCommand.Path
+Push-Location $dir
 
 npm i -g firebase-tools
 write-host "starting deploy...";
