@@ -3,8 +3,8 @@ param(
     [string]$fireBaseProject,
     [string]$releaseMessage
 )
-$dir = "drop/dist"
-Push-Location $dir
+
+Push-Location 'Github-Browser-CI/drop/dist'
 
 npm i -g firebase-tools
 write-host "starting deploy...";
