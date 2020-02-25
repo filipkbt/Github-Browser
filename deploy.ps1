@@ -3,7 +3,7 @@ param(
     [string]$fireBaseProject,
     [string]$releaseMessage
 )
-$dir = Split-Path $MyInvocation.MyCommand.Path
+$dir = drop/dist
 Push-Location $dir
 
 npm i -g firebase-tools
