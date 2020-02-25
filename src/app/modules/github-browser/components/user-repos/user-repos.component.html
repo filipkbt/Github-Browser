@@ -5,11 +5,10 @@
     </mat-form-field>
     <div class="data-table">
         <app-loading-spinner *ngIf="isLoadingRepos"></app-loading-spinner>
-        <div class="mat-elevation-z8" [ngClass]="{'visibility-hidden': isLoadingRepos}" >
-            <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8"
-                style="width: 100%">
+        <div class="mat-elevation-z8" [ngClass]="{'visibility-hidden': isLoadingRepos}">
+            <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" matSort>
                 <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-                    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+                    <th mat-header-cell *matHeaderCellDef [mat-sort-header]="column"> {{column}} </th>
                     <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
                 </ng-container>
 
@@ -36,5 +35,4 @@
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
         </div>
     </div>
-
 </mat-card>

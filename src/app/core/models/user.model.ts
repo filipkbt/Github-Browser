@@ -8,6 +8,5 @@ export class User {
   }
   
   export interface IUserResponse {
-    total_count: number;
     items: User[];
   }

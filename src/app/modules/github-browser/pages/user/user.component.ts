@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
       .subscribe(x => {
         this.user = x;
       }, err => {
-        this.snackBar.open('Failed to get user details', 'Close', {
+        this.snackBar.open('Failed to get user details.', 'Close', {
           duration: 3000
         });
       })
@@ -45,7 +45,7 @@ export class UserComponent implements OnInit {
       .subscribe(x => {
         this.userRepos = x;
       }, err => {
-        this.snackBar.open('Failed to get user repos', 'Close', {
+        this.snackBar.open('Failed to get user repos.', 'Close', {
           duration: 3000
         });
       });
