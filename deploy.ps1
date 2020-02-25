@@ -4,7 +4,7 @@ param(
     [string]$releaseMessage
 )
 
-Push-Location 'Github-Browser-CI\drop\dist'
+Push-Location 'drop\dist'
 
 npm i -g firebase-tools
 write-host "starting deploy...";
