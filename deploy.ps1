@@ -3,7 +3,7 @@ param(
     [string]$fireBaseProject,
     [string]$releaseMessage
 )
-$dir = drop/dist
+$dir = "drop/dist"
 Push-Location $dir
 
 npm i -g firebase-tools
