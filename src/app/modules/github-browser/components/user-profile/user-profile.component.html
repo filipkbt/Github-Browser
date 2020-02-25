@@ -1,1 +1,10 @@
-<p>user-profile works!</p>
+<mat-card class="card">
+    <img mat-card-image [src]="user.avatar_url" alt="User avatar">
+    <mat-card-header>
+            <mat-card-title>{{user.login}}</mat-card-title>
+          </mat-card-header>
+    <mat-card-actions>
+      <a mat-button [href]="user.html_url">Go to Github <mat-icon>arrow_right_alt</mat-icon>
+      </a>
+    </mat-card-actions>
+  </mat-card>

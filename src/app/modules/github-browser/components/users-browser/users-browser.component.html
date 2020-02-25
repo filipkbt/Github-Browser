@@ -1,1 +1,16 @@
-<p>users-browser works!</p>
+<div class="toolbar" role="banner">
+    <img width="40" alt="Github logo" src="../../../../../assets/images/github-logo.png" />
+    <span>Github Browser</span>
+    <mat-form-field class="">
+        <input type="text" placeholder="Search users" [matAutocomplete]="autocompleteUsers" matInput
+            [formControl]="githubUsernameFormControl" />
+        <mat-autocomplete autoActiveFirstOption #autocompleteUsers="matAutocomplete" [autoActiveFirstOption]='true'
+            (optionSelected)="selectUser($event)" [displayWith]="displayUser">
+            <mat-option *ngFor="let user of filteredUsers" [value]="user">
+                <img with="25" height="25" [src]="user.avatar_url">
+                {{ user.login }}
+            </mat-option>
+        </mat-autocomplete>
+        <mat-error>Required</mat-error>
+    </mat-form-field>
+</div>

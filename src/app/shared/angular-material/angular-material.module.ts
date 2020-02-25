@@ -8,6 +8,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 const angularMaterialModules = [
   MatInputModule,
@@ -17,7 +19,9 @@ const angularMaterialModules = [
   MatPaginatorModule,
   MatSortModule,
   MatSnackBarModule,
-  MatCardModule
+  MatCardModule,
+  MatIconModule,
+  MatButtonModule
 ]
 
 @NgModule({
