@@ -1,5 +1,10 @@
 table {
   flex-basis: 70%;
+  word-break: break-word;
+}
+
+.mat-column-fork {
+  min-width: 50px;
 }
 
 tr.detail-row {

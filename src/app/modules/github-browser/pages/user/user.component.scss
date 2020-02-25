@@ -17,3 +17,17 @@
   padding: 15px;
   width: 100%;
 }
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .user-profile, .user-repos {
+    margin: auto
+  }
+
+  .user-repos {
+    padding: 0;
+  }
+}
