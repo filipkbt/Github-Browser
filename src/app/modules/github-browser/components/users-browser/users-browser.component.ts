@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/models/user.model';
 import { SearchService } from 'src/app/core/services/search.service';
 import { FormControl, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
@@ -24,7 +23,7 @@ export class UsersBrowserComponent implements OnInit {
 
   ngOnInit(): void {
     this.githubUsernameFormControl.valueChanges.pipe(
-      debounceTime(50)
+      debounceTime(500)
     ).subscribe(x => {
       if (typeof x === 'string') {
         this.getUsers(x);

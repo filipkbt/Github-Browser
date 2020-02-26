@@ -5,7 +5,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { RepoService } from 'src/app/core/services/repo.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs/operators';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
 import { SnackbarType } from 'src/app/core/enums/snackbar-type.enum';

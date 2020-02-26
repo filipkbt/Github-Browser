@@ -3,7 +3,6 @@ import { User } from 'src/app/core/models/user.model';
 import { Repo } from 'src/app/core/models/repo.model';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs/operators';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
 import { SnackbarType } from 'src/app/core/enums/snackbar-type.enum';

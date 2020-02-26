@@ -34,8 +34,8 @@
                     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
                 </table>
                 <div class="table-text" *ngIf="!isLoadingRepos && userRepos.length === 0">
-                        User has no repositories
-                    </div>
+                    User has no repositories
+                </div>
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
             </div>
         </div>
