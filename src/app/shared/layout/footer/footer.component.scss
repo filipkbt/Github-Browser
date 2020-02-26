@@ -1,11 +1,12 @@
+@import './../../../../assets/styles/variables';
 
 footer {
   height: 50px;
-  background-color: black;
+  background-color: $black;
   line-height: 50px;
   text-align: center;
-  color: #fff;
+  color: $white;
   .heart {
-    color: red;
+    color: $red;
   }
 }

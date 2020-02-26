@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/styles/variables';
 
 html, body {
   height: 100%;
@@ -24,7 +24,7 @@ body {
 }
 
 .snackbar-error {
-    color: white;
-    background-color:red;
+    color: $white;
+    background-color:$red;
 }
 

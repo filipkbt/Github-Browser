@@ -1,3 +1,5 @@
+@import './../../../../../assets/styles/variables';
+
 .toolbar {
   top: 0;
   left: 0;
@@ -5,8 +7,8 @@
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: #1976d2;
-  color: white;
+  background-color: $blue;
+  color: $white;
   font-weight: 600;
   img {
     margin: 0 16px;
