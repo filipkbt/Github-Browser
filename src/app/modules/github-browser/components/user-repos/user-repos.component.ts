@@ -26,7 +26,7 @@ export class UserReposComponent implements OnInit, OnChanges {
   expandedElement: Repo | null;
   dataSource: MatTableDataSource<Repo>;
   isLoadingBranches = false;
-  @Input() isLoadingRepos;
+  @Input() isLoadingRepos = true;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;

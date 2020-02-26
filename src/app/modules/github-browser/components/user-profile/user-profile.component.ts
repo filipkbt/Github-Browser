@@ -7,7 +7,7 @@ import { User } from 'src/app/core/models/user.model';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  @Input() isLoadingUserDetails: boolean;
+  @Input() isLoadingUserDetails = true;
   @Input() user: User;
 
   constructor() { }
