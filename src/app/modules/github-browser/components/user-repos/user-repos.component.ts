@@ -7,6 +7,8 @@ import { RepoService } from 'src/app/core/services/repo.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs/operators';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
+import { SnackbarType } from 'src/app/core/enums/snackbar-type.enum';
 
 @Component({
   selector: 'app-user-repos',
@@ -31,7 +33,7 @@ export class UserReposComponent implements OnInit, OnChanges {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private repoService: RepoService, private snackBar: MatSnackBar) {
+  constructor(private repoService: RepoService, private snackbarService: SnackbarService) {
   }
 
   ngOnInit() {
@@ -55,9 +57,7 @@ export class UserReposComponent implements OnInit, OnChanges {
       .subscribe(x => {
         this.userRepos.find(x => x.name === element.name).branches = x;
       }, err => {
-        this.snackBar.open('Failed to get branches connected with repo.', 'Close', {
-          duration: 3000
-        });
+        this.snackbarService.openSnackbar('Failed to get branches connected with repo.', 'Close', 3000, SnackbarType.Error);
       });
     this.expandedElement = this.expandedElement === element ? null : element;
   }

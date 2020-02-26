@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs/operators';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
+import { SnackbarType } from 'src/app/core/enums/snackbar-type.enum';
 
 @Component({
   selector: 'app-user',
@@ -17,7 +19,7 @@ export class UserComponent implements OnInit {
   userRepos: Repo[];
   isLoadingRepos = false;
   isLoadingUserDetails = false;
-  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private snackBar: MatSnackBar) { }
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(x => {
@@ -34,9 +36,7 @@ export class UserComponent implements OnInit {
       .subscribe(x => {
         this.user = x;
       }, err => {
-        this.snackBar.open('Failed to get user details.', 'Close', {
-          duration: 3000
-        });
+        this.snackbarService.openSnackbar('Failed to get user details.', 'Close', 3000, SnackbarType.Error);
       });
   }
 
@@ -47,9 +47,7 @@ export class UserComponent implements OnInit {
       .subscribe(x => {
         this.userRepos = x;
       }, err => {
-        this.snackBar.open('Failed to get user repos.', 'Close', {
-          duration: 3000
-        });
+        this.snackbarService.openSnackbar('Failed to get user repos.', 'Close', 3000, SnackbarType.Error);
       });
   }
 }

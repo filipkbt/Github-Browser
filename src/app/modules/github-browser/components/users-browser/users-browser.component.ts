@@ -5,6 +5,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
+import { SnackbarType } from 'src/app/core/enums/snackbar-type.enum';
 @Component({
   selector: 'app-users-browser',
   templateUrl: './users-browser.component.html',
@@ -17,12 +19,12 @@ export class UsersBrowserComponent implements OnInit {
   isLoading = false;
   constructor(
     private searchService: SearchService,
-    private snackBar: MatSnackBar,
+    private snackbarService: SnackbarService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.githubUsernameFormControl.valueChanges.pipe(
-      debounceTime(500)
+      debounceTime(50)
     ).subscribe(x => {
       if (typeof x === 'string') {
         this.getUsers(x);
@@ -35,13 +37,11 @@ export class UsersBrowserComponent implements OnInit {
       this.filteredUsers = x.items;
     }, err => {
       if (err.status === 403) {
-        this.snackBar.open('API rate limit exceeded. Rate limit will be reset in the next minute.', 'Close', {
-          duration: 5000
-        });
+        this.snackbarService.openSnackbar('API rate limit exceeded. Rate limit will be reset in the next minute.',
+          'Close', 5000, SnackbarType.Error);
       } else {
-        this.snackBar.open('Failed to load users.', 'Close', {
-          duration: 3000
-        });
+        this.snackbarService.openSnackbar('Failed to load users.',
+        'Close', 3000, SnackbarType.Error);
       }
     });
   }
