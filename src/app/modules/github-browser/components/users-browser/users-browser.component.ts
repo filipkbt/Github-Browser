@@ -24,7 +24,7 @@ export class UsersBrowserComponent implements OnInit {
 
   ngOnInit(): void {
     this.githubUsernameFormControl.valueChanges.pipe(
-      debounceTime(500)
+      debounceTime(50)
     ).subscribe(x => {
       if (typeof x === 'string') {
         this.getUsers(x);

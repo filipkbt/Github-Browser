@@ -1,8 +1,5 @@
 <mat-card>
     <app-loading-spinner *ngIf="isLoadingRepos"></app-loading-spinner>
-    <div class="table-text" *ngIf="!isLoadingRepos && userRepos.length === 0">
-        User has no repositories
-    </div>
     <div [ngClass]="{'visibility-hidden': isLoadingRepos}">
         <mat-form-field class="filter-input">
             <mat-label>Filter</mat-label>
@@ -36,7 +33,9 @@
                     </tr>
                     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
                 </table>
-
+                <div class="table-text" *ngIf="!isLoadingRepos && userRepos.length === 0">
+                        User has no repositories
+                    </div>
                 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
             </div>
         </div>
