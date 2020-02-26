@@ -67,3 +67,10 @@ tr.element-row:not(.example-expanded-row):active {
 .filter-input {
   width: 100%;
 }
+
+.table-text {
+    display: flex;
+    justify-content: center;
+    padding: 14px;
+    font-size: 14px;
+}
