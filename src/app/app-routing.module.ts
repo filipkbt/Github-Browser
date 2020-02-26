@@ -5,7 +5,7 @@ import { UserComponent } from './modules/github-browser/pages/user/user.componen
 
 const routes: Routes = [
   {
-    path: 'users/:term',
+    path: 'users/:userName',
     component: UserComponent
   }
 ];

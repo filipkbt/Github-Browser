@@ -9,7 +9,7 @@ import { Branch } from '../models/branch.model';
 })
 export class RepoService {
 
-  private readonly GIT_REPOS_API_URL = environment.API_URL + "/repos";
+  private readonly GIT_REPOS_API_URL = environment.API_URL + '/repos';
 
   constructor(private httpClient: HttpClient) { }
 

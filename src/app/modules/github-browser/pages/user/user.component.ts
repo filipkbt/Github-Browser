@@ -13,6 +13,7 @@ import { finalize } from 'rxjs/operators';
 })
 export class UserComponent implements OnInit {
   user: User;
+  userName: string;
   userRepos: Repo[];
   isLoadingRepos = false;
   isLoadingUserDetails = false;
@@ -20,14 +21,15 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(x => {
-      this.getUserDetails(x.term);
-      this.getUserRepos(x.term);
-    })
+      this.userName = x.userName;
+      this.getUserDetails(this.userName);
+      this.getUserRepos(this.userName);
+    });
   }
 
-  getUserDetails(username: string) {
-    this.isLoadingUserDetails = true
-    this.userService.getUser(username)
+  getUserDetails(userName: string) {
+    this.isLoadingUserDetails = true;
+    this.userService.getUser(userName)
       .pipe(finalize(() => this.isLoadingUserDetails = false))
       .subscribe(x => {
         this.user = x;
@@ -35,12 +37,12 @@ export class UserComponent implements OnInit {
         this.snackBar.open('Failed to get user details.', 'Close', {
           duration: 3000
         });
-      })
+      });
   }
 
-  getUserRepos(username: string) {
+  getUserRepos(userName: string) {
     this.isLoadingRepos = true;
-    this.userService.getUserRepos(username)
+    this.userService.getUserRepos(userName)
       .pipe(finalize(() => this.isLoadingRepos = false))
       .subscribe(x => {
         this.userRepos = x;

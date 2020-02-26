@@ -24,7 +24,7 @@ const angularMaterialModules = [
   MatIconModule,
   MatButtonModule,
   MatProgressSpinnerModule
-]
+];
 
 @NgModule({
   declarations: [],

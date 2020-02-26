@@ -27,24 +27,23 @@ export class UsersBrowserComponent implements OnInit {
       if (typeof x === 'string') {
         this.getUsers(x);
       }
-    })
+    });
   }
 
   getUsers(input: string) {
     this.searchService.getUsers(input).subscribe(x => {
       this.filteredUsers = x.items;
     }, err => {
-      if (err.status == 403) {
+      if (err.status === 403) {
         this.snackBar.open('API rate limit exceeded. Rate limit will be reset in the next minute.', 'Close', {
           duration: 5000
         });
-      }
-      else {
+      } else {
         this.snackBar.open('Failed to load users.', 'Close', {
           duration: 3000
         });
       }
-    })
+    });
   }
 
   selectUser(event: any) {

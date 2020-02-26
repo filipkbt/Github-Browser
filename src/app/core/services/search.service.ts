@@ -9,7 +9,7 @@ import { IUserResponse } from '../models/user.model';
 })
 export class SearchService {
 
-  private readonly GIT_SEARCH_API_URL = environment.API_URL + "/search";
+  private readonly GIT_SEARCH_API_URL = environment.API_URL + '/search';
 
   constructor(private httpClient: HttpClient) { }
 
